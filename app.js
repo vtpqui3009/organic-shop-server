@@ -39,7 +39,7 @@ app.use("/api/v1", comment);
 // app.use("/", stripe);
 app.post("/create-checkout-session", stripePayment);
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+// app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.get("/", (req, res) => {
   console.log("Hello world. Wish you have more lucky thing in life!");

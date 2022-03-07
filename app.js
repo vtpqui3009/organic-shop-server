@@ -30,12 +30,13 @@ const blog = require("./routes/blogRoute");
 const comment = require("./routes/commentRoute");
 const stripe = require("./routes/stripeRoute");
 const { stripePayment } = require("./controller/stripeController");
-app.use("/", product);
-app.use("/", user);
-app.use("/", order);
-app.use("/", address);
-app.use("/", blog);
-app.use("/", comment);
+app.use(product);
+app.use(user);
+app.use(order);
+app.use(address);
+app.use(blog);
+app.use(comment);
+
 // app.use("/", stripe);
 app.post("/create-checkout-session", stripePayment);
 

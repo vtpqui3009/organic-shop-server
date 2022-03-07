@@ -41,8 +41,8 @@ app.post("/create-checkout-session", stripePayment);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+app.get("/", (req, res) => {
+  console.log("Hello world. Wish you have more lucky thing in life!");
 });
 
 // Middleware for Errors

@@ -37,8 +37,8 @@ io.on("connection", (socket) => {
       });
     }
 
-    console.log(users);
-    console.log(socket.adapter.rooms);
+    // console.log(users);
+    // console.log(socket.adapter.rooms);
   });
   socket.on("createComment", async (message) => {
     const { productId, userId, userName, userAvatar, ratings, comment } =

@@ -7,7 +7,8 @@ const path = require("path");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "https://new-organic-shop.netlify.app",
+  origin: "http://localhost:3000",
+//   origin: "https://new-organic-shop.netlify.app",
   credentials: true,
   //optionSuccessStatus: 200,
 };

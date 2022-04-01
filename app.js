@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const cors = require("cors");
-const session = require("express-session");
+// const session = require("express-session");
 const corsOptions = {
   origin: "https://new-organic-shop.netlify.app",
   credentials: true,
@@ -14,19 +14,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
-
-var sess = {
-  secret: "keyboard cat",
-  cookie: {},
-};
-
-if (app.get("env") === "production") {
-  app.set("trust proxy", 1); // trust first proxy
-  sess.cookie.secure = true; // serve secure cookies
-}
-
-app.use(session(sess));
-
 const errorMiddleware = require("./middleware/error");
 
 app.use(express.json());
@@ -41,7 +28,7 @@ const order = require("./routes/orderRoute");
 const address = require("./routes/addressRoute");
 const blog = require("./routes/blogRoute");
 const comment = require("./routes/commentRoute");
-const { createCheckoutSession } = require("./controller/stripeController");
+// const { createCheckoutSession } = require("./controller/stripeController");
 
 app.use(product);
 app.use(user);
@@ -49,7 +36,7 @@ app.use(order);
 app.use(address);
 app.use(blog);
 app.use(comment);
-app.post("create-checkout-session", createCheckoutSession);
+// app.post("create-checkout-session", createCheckoutSession);
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 

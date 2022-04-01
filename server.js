@@ -10,7 +10,7 @@ const http = require("http");
 // const io = require("socket.io");
 const { Server } = require("socket.io");
 
-const server = app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log("server is running port: " + process.env.PORT);
 });
 const io = new Server(server, { cors: { origin: "*" } });
@@ -37,8 +37,8 @@ io.on("connection", (socket) => {
       });
     }
 
-    // console.log(users);
-    // console.log(socket.adapter.rooms);
+    console.log(users);
+    console.log(socket.adapter.rooms);
   });
   socket.on("createComment", async (message) => {
     const { productId, userId, userName, userAvatar, ratings, comment } =

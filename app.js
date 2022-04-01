@@ -36,7 +36,7 @@ app.use(order);
 app.use(address);
 app.use(blog);
 app.use(comment);
-app.post("create-checkout-session", createCheckoutSession);
+app.post("/create-checkout-session", createCheckoutSession);
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 

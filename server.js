@@ -10,8 +10,8 @@ const http = require("http");
 // const io = require("socket.io");
 const { Server } = require("socket.io");
 
-const server = app.listen(process.env.PORT || 3000, () => {
-  console.log("server is running port: " + process.env.PORT);
+const server = app.listen(process.env.PORT || 4000, () => {
+  console.log("server is running port: " + process.env.PORT || 4000);
 });
 const io = new Server(server, { cors: { origin: "*" } });
 //socket io
@@ -78,9 +78,6 @@ cloudinary.config({
   api_secret: process.env.CLOUNDINARY_API_SECRET,
 });
 
-// http.listen(process.env.PORT, () => {
-//   console.log("server is running port: " + process.env.PORT);
-// });
 // Unhanded Promise Rejections
 process.on("unhandledRejection", (err) => {
   console.log(`error: ${err.message}`);

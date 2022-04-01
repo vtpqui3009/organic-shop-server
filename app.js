@@ -28,7 +28,7 @@ const order = require("./routes/orderRoute");
 const address = require("./routes/addressRoute");
 const blog = require("./routes/blogRoute");
 const comment = require("./routes/commentRoute");
-// const { createCheckoutSession } = require("./controller/stripeController");
+const { createCheckoutSession } = require("./controller/stripeController");
 
 app.use(product);
 app.use(user);
@@ -36,7 +36,7 @@ app.use(order);
 app.use(address);
 app.use(blog);
 app.use(comment);
-// app.post("create-checkout-session", createCheckoutSession);
+app.post("create-checkout-session", createCheckoutSession);
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 

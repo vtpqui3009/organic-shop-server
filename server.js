@@ -6,13 +6,13 @@ const cloudinary = require("cloudinary");
 dotenv.config({ path: "config/config.env" });
 
 const http = require("http");
-// const server = http.createServer(app);
-// const io = require("socket.io");
 const { Server } = require("socket.io");
-
-const server = app.listen(process.env.PORT || 4000, () => {
-  console.log("server is running port: " + process.env.PORT || 4000);
+const PORT = process.env.PORT || 3000;
+const server = app.listen(PORT, () => {
+  console.log("server is running port: " + PORT || 3000);
 });
+//connect database
+connectDatabase();
 const io = new Server(server, { cors: { origin: "*" } });
 //socket io
 let users = [];
@@ -68,9 +68,6 @@ process.on("uncaughtException", (err) => {
 
   process.exit(1);
 });
-
-//connect database
-connectDatabase();
 
 cloudinary.config({
   cloud_name: process.env.CLOUNDINARY_NAME,

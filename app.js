@@ -31,13 +31,13 @@ const comment = require("./routes/commentRoute");
 // const stripe = require("./routes/stripeRoute");
 const { createCheckoutSession } = require("./controller/stripeController");
 
-app.use("api/v1", product);
-app.use("api/v1", user);
-app.use("api/v1", order);
-app.use("api/v1", address);
-app.use("api/v1", blog);
-app.use("api/v1", comment);
-app.post("api/v1/create-checkout-session", createCheckoutSession);
+app.use("/api/v1", product);
+app.use("/api/v1", user);
+app.use("/api/v1", order);
+app.use("/api/v1", address);
+app.use("/api/v1", blog);
+app.use("/api/v1", comment);
+app.post("/api/v1/create-checkout-session", createCheckoutSession);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 

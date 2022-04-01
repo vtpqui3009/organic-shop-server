@@ -7,7 +7,8 @@ const path = require("path");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "https://new-organic-shop.netlify.app",
+  origin: "http://localhost:3000",
+  // origin: "https://new-organic-shop.netlify.app",
   credentials: true,
   //optionSuccessStatus: 200,
 };
@@ -28,8 +29,8 @@ const order = require("./routes/orderRoute");
 const address = require("./routes/addressRoute");
 const blog = require("./routes/blogRoute");
 const comment = require("./routes/commentRoute");
-const stripe = require("./routes/stripeRoute");
-const createCheckoutSession = require("./controller/stripeController");
+// const stripe = require("./routes/stripeRoute");
+const { createCheckoutSession } = require("./controller/stripeController");
 
 app.use("/api/v1", product);
 app.use("/api/v1", user);
@@ -37,16 +38,16 @@ app.use("/api/v1", order);
 app.use("/api/v1", address);
 app.use("/api/v1", blog);
 app.use("/api/v1", comment);
-app.use("/api/v1", stripe);
+// app.use("/api/v1", stripe);
 app.post("/create-checkout-session", createCheckoutSession);
 
-const publicPath = path.join(__dirname, "..", "public");
-app.use(express.static(publicPath));
+// const publicPath = path.join(__dirname, "..", "public");
+// app.use(express.static(publicPath));
 // app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(publicPath, "index.html"));
+// });
 
 // Middleware for Errors
 app.use(errorMiddleware);

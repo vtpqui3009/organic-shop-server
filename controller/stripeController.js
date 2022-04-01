@@ -2,7 +2,7 @@ const stripe = require("stripe")(
   "  sk_test_51KRqpcL6Cna0WfUD4smBLejfR0GfbAB2247IF9D5XtepIKTXtzEoTkHCP0eYLIXBnPGw4pgPXLYRjnWIH0iKgJuE00z283u1DO"
 );
 
-const createCheckoutSession = async (req, res) => {
+exports.createCheckoutSession = async (req, res) => {
   const domainUrl = process.env.WEB_APP_URL;
   console.log(domainUrl);
   const { line_items, customer_email } = req.body;
@@ -30,4 +30,3 @@ const createCheckoutSession = async (req, res) => {
       .json({ error: "An error occured, unable to create session" });
   }
 };
-module.exports = createCheckoutSession;

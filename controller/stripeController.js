@@ -3,8 +3,7 @@ const stripe = require("stripe")(
 );
 
 exports.createCheckoutSession = async (req, res) => {
-  const domainUrl = process.env.WEB_APP_URL;
-  console.log(domainUrl);
+  // const domainUrl = process.env.WEB_APP_URL;
   const { line_items, customer_email } = req.body;
   if (!line_items || !customer_email) {
     return res
@@ -18,8 +17,8 @@ exports.createCheckoutSession = async (req, res) => {
       mode: "payment",
       line_items,
       customer_email,
-      success_url: `${domainUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${domainUrl}/canceled`,
+      success_url: `https://new-organic-shop.netlify.app/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `https://new-organic-shop.netlify.app/canceled`,
       shipping_address_collection: { allowed_countries: ["VN"] },
     });
     res.status(200).json({ sessionId: session.id });

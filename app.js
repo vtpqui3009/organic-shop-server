@@ -40,12 +40,10 @@ app.use("/api/v1", comment);
 // app.use("/api/v1", stripe);
 app.post("/create-checkout-session", createCheckoutSession);
 
-const publicPath = path.join(__dirname, "..", "public");
-app.use(express.static(publicPath));
-// app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"));
+  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
 });
 
 // Middleware for Errors

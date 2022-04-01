@@ -10,7 +10,7 @@ const http = require("http");
 // const io = require("socket.io");
 const { Server } = require("socket.io");
 
-const server = app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
   console.log("server is running port: " + process.env.PORT);
 });
 const io = new Server(server, { cors: { origin: "*" } });

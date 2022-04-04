@@ -7,7 +7,7 @@ const path = require("path");
 const cors = require("cors");
 // const session = require("express-session");
 const corsOptions = {
-  origin: "https://new-organic-shop.netlify.app",
+  origin: ["https://new-organic-shop.netlify.app", "http://localhost:4000"],
   credentials: true,
   // optionSuccessStatus: 200,
 };
@@ -43,10 +43,12 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
 });
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
-// Middleware for Errors
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
 app.use(errorMiddleware);
 
 module.exports = app;

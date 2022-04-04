@@ -56,6 +56,26 @@ io.on("connection", (socket) => {
     console.log(newComment);
     io.to(newComment.productId).emit("sendCommentToClient", newComment);
   });
+  socket.on("replyComment", async (replyMessage) => {
+    const {
+      prevUser,
+      userId,
+      userName,
+      userAvatar,
+      ratings,
+      comment,
+      parentId,
+    } = replyMessage;
+    // console.log("Reply messsage : ", replyMessage);
+    const hasComment = await Comments.findById({ _id: parentId });
+    // console.log("Line 70 : ", hasComment);
+    if (hasComment) {
+      hasComment.reply.push(replyMessage);
+      await hasComment.save();
+      io.to(hasComment.productId).emit("sendReplyCommentToClient", hasComment);
+    } else {
+    }
+  });
   socket.on("disconnect", () => {
     console.log(socket.id + " disconnected.");
   });

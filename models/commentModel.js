@@ -29,7 +29,11 @@ const commentSchema = new mongoose.Schema({
 
   reply: [
     {
-      user: {
+      prevUser: {
+        type: String,
+        required: true,
+      },
+      userId: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
         required: true,
@@ -42,7 +46,7 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      rating: {
+      ratings: {
         type: Number,
         required: true,
       },
